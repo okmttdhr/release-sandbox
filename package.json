@@ -4,5 +4,12 @@
   "main": "index.js",
   "repository": "https://github.com/okmttdhr/release-sandbox.git",
   "author": "okp",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "shipjs": "^0.11.2"
+  },
+  "scripts": {
+    "release:prepare": "shipjs prepare",
+    "release:trigger": "shipjs trigger"
+  }
 }
