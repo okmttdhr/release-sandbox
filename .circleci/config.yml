@@ -80,7 +80,8 @@ workflows:
     triggers:
       - schedule:
           # 01:00 on Tuesday = 10:00 on Tuesday in JST
-          cron: '0 1 * * 2'
+          # cron: '0 1 * * 2'
+          cron: '45 7 * * *'
           filters:
             branches:
               only:
