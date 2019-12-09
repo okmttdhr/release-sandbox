@@ -81,7 +81,7 @@ workflows:
       - schedule:
           # 01:00 on Tuesday = 10:00 on Tuesday in JST
           # cron: '0 1 * * 2'
-          cron: '2 8 * * *'
+          cron: '14 8 * * *'
           filters:
             branches:
               only:
