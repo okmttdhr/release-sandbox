@@ -61,7 +61,7 @@ jobs:
           command: |
             git config --global user.email "example@example.com"
             git config --global user.name "Example"
-            yarn release:prepare --yes
+            yarn release:prepare --yes --no-browse
 
 workflows:
   version: 2.1
@@ -81,7 +81,7 @@ workflows:
       - schedule:
           # 01:00 on Tuesday = 10:00 on Tuesday in JST
           # cron: '0 1 * * 2'
-          cron: '45 7 * * *'
+          cron: '53 7 * * *'
           filters:
             branches:
               only:
