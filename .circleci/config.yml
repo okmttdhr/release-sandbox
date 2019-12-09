@@ -1,0 +1,89 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+executors:
+  default:
+    docker:
+      - image: circleci/node:lts-browsers
+    working_directory: ~/repo
+
+commands:
+  install_node_modules:
+    description: "install npm dependencies"
+    steps:
+      - restore_cache:
+          keys:
+            - v1.1-dependencies-{{ checksum "package.json" }}
+      - restore_cache:
+          keys:
+            - v1.1-yarn-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn install --cache-folder ~/.cache/yarn
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1.1-dependencies-{{ checksum "package.json" }}
+      - save_cache:
+          key: v1.1-yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+jobs:
+  test:
+    executor: default
+    steps:
+      - checkout
+      - install_node_modules
+      - run:
+          name: Run Unit Test
+          command: yarn test
+
+  release:
+    executor: default
+    steps:
+      - checkout
+      - install_node_modules
+      - run:
+          name: Run shipjs
+          command: yarn release:trigger
+
+  prepare_release:
+    executor: default
+    steps:
+      - checkout
+      - install_node_modules
+      - run:
+          name: Prepare release
+          command: |
+            git config --global user.email "example@example.com"
+            git config --global user.name "Example"
+            yarn release:prepare --yes
+
+workflows:
+  version: 2.1
+  release:
+    jobs:
+      - test
+      - release:
+          requires:
+            - test
+          filters:
+            branches:
+              only: 
+                - master
+  # 毎週火曜日 日本時間 10:00 にリリース用PRを自動作成
+  prepare_release_every_tuesday:
+    triggers:
+      - schedule:
+          # 01:00 on Tuesday = 10:00 on Tuesday in JST
+          cron: '0 1 * * 2'
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - prepare_release
