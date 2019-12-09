@@ -9,6 +9,8 @@
     "shipjs": "^0.11.2"
   },
   "scripts": {
+    "test": "echo test",
+    "build": "echo build",
     "release:prepare": "shipjs prepare",
     "release:trigger": "shipjs trigger"
   }
