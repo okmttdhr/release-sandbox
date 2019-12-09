@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/okmttdhr/release-sandbox/compare/v1.1.0...v1.2.0) (2019-12-09)
+
+
+### Features
+
+* Feature 3 ([df6ab54](https://github.com/okmttdhr/release-sandbox/commit/df6ab545ce6f8197cb978847cca1f4c8017a9508))
+
+
+
 # [1.1.0](https://github.com/okmttdhr/release-sandbox/compare/v1.0.1...v1.1.0) (2019-12-09)
 
 
