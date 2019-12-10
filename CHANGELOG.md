@@ -1,3 +1,13 @@
+# [1.6.0](https://github.com/okmttdhr/release-sandbox/compare/v1.3.0...v1.6.0) (2019-12-10)
+
+
+### Features
+
+* Add feat 10 ([#16](https://github.com/okmttdhr/release-sandbox/issues/16)) ([2073295](https://github.com/okmttdhr/release-sandbox/commit/2073295b820702b82fcecb32de8071045697d15c))
+* Add feat 11 ([1226a14](https://github.com/okmttdhr/release-sandbox/commit/1226a1453886152caf96e859bec43b9bd14ecdb4))
+
+
+
 # [1.5.0](https://github.com/okmttdhr/release-sandbox/compare/v1.3.0...v1.5.0) (2019-12-10)
 
 
